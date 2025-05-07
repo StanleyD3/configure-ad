@@ -27,10 +27,8 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>Deployment and Configuration Steps</h2>
 
-<p>
-![image](https://github.com/user-attachments/assets/38821b0a-c728-427e-8163-3fa672c01baf)
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+![image](https://github.com/user-attachments/assets/b425b777-13fc-44a8-a9c7-fd8ad03d70e0)
+Create 2 virtual machines within the same network and resource group. One acting as the domain controller and the other as an end-user's computer. The Domain Controller's system being used is windows server 2022 Datacenter. The end-user's computer may be 
 </p>
 <br />
 
