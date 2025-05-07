@@ -46,11 +46,13 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 ![image](https://github.com/user-attachments/assets/9de984cb-a3cf-442f-b231-67c611f1f075)
 
-- Next we want to configure the Domain Controller's NIC privite IP address to be static, then set the End-user's DNS settings to the Domain Controllers private IP address
+- Exit the RDP connection and reopen microsoft azure once more
+- Within Azure we want to configure the Domain Controller's NIC privite IP address to be static, for a consistent IP address
+- Once it is static set the End-user's DNS settings to the Domain Controller's private IP address, so the end user can join the domain of our domain controller
 
 ![powershell con DNS](https://github.com/user-attachments/assets/675be111-7918-4854-8ace-f8f9725ba927)
 
-- Restart both VM's to make sure the changes apply
+- Restart the domain controller VM to make sure the changes apply
 - Afterwards log into the End-user computer with the username and password created
 - Once in the end user's computer open powershell and ping the Domain Controller using it's IP address, you shoud get packets back as above showing connectivity
 - Then we can run "IPconfig/ all" to confirm the output for the DNS settings, which should show the Domain Controller's private IP as in the above picture
