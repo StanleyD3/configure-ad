@@ -76,7 +76,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 ![image](https://github.com/user-attachments/assets/41b6939d-4fa2-47e5-83c6-cef2755d3842)
 
 - Promoting the server will redirect you to the configuration of the active directory domin services
-- click add a new forest, and nopw you can name your domain in this case it's "Mydomain.com"
+- click add a new forest, and now you can name your domain in this case it's "Mydomain.com"
 - Next you will set your restore mode password, this will be used to repair and/or restore the Active directory's database
 
 ![image](https://github.com/user-attachments/assets/d414ec8d-6e0e-43a7-84f1-9fe032274df5)
@@ -102,11 +102,58 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 - Now to make the user officially an admin right click the user and open properties
 - in properties go to "Member Of", click add, type in doamin admins, click check names, and lastly hit okay to apply the changes
-- now logout and back in with the 
+- now the Active Directory has been configured and has at least 1 admin user
 
 ![image](https://github.com/user-attachments/assets/0ce9b6b4-e13b-41ed-a530-49bf78c38843)
 
-Now 
+- Now log-in to the end-user computer once more to add it to the domain
+- once logged in right click the windows menu and open system
+- in the right hand corner it will say "rename this PC (advanced)" which will open system properties, as shown in images above
+- Here under computer name you will see an option that says "change" which will allow us to join our domain
+- inside the change option under memerb of will be the option to switch from the assigned workgroup to a domain, after clicking the domain option type in your domain name and click "OK"
+
+![add domain to client](https://github.com/user-attachments/assets/bdd8fa08-8e26-4f10-baf5-e97c0b360e67)
+
+- After clicking OK, you will be prompted to log into the domain with an account with permission to join. IN this case that is the one Admin account created as shown in the above image
+- You will now have logged in the end-user computer with the admin account created on our Domain Controller
+
+![rdp access](https://github.com/user-attachments/assets/bf3b5ef3-c5b7-478e-91ce-c1a1f4c5cf13)
+
+- Now that we're logged in lets make it so all users that we create can remotely sign in via the end-user computer
+- open systems and go to remote desktop
+- Next, under user accounts click "select users that can remotely access this PC"
+- Then hit add and in the empty text box type in domain users, click check names, and click okay.
+- Now it is official, any account registered in the domain controller can sign in via the end-user computer
+
+![image](https://github.com/user-attachments/assets/59df3f6d-602a-4b37-afaa-80b5b3af75e1)
+
+- Now let's create more users by making several accounts in one go
+- open Windows PowerShell ISE, make sure to run as an administrator
+- hit file and save as to create a file for the users we will create, and save.
+
+![image](https://github.com/user-attachments/assets/41791136-1785-4a35-b2b3-08fc71b8eac8)
+
+- Here i ran a script to create 10,000 users all under the same password, "Password1".
+- once the script is created hit the green triangle on the top toolbar to run the script an it will create those 10,000 account, any red means there was an error
+- Highlighted in the images above will show the OU I chose these accounts to get created in which is the EMPLOYEE folder created earlier
+- you can check on these accounts by going back in "Active Directory Users and Computers" and opening the OU, ours being EMPLOYEE
+
+  ![image](https://github.com/user-attachments/assets/b9e63de8-2c0e-43c9-b058-2573b499757c)
+
+- Now that our users are created lets log into one of those accounts to confirm
+- Pick an accunt and log in to the end-user computer with their credentials as in the image above via RDP, using Remote Desktop Connection
+- you can check all past users that logged in this computer going to local disk (C:) and opening the users file as seen above. Any account that logs in will be saved here
+
+![image](https://github.com/user-attachments/assets/ae21afd5-746c-481a-8371-c876ad8797a8)
+
+- As far as managing accounts, 2 of the most common things will be password assistance and monitoring/tracing account activity
+- In the Domain contrller within group policy management when you go into the domain's folder you can add group policies to implement mass changes
+- you can edit the group policy by clicking edit, under computer configuration drop down security settings and then account policies.
+- There will be several options but focusing on passwords, the most common being lockouts and in account lockout policies you may change the duration, waiting period, threshhold, and more.
+- You may also use event viewr to monitor security logs as displayed in the image on the right. In event viewer open the windows log and click security to see all account activity like sign ins and failed attempts.
+
+This concludes our comprehensive breakdown on configuring, deploying, and managing active directory. Thanks for your time and any questions you may reach out via linked in
+https://www.linkedin.com/in/stanley-dansby-b77247175/
 
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
