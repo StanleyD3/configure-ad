@@ -3,7 +3,7 @@
 </p>
 
 <h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
+This tutorial walks through the complete deployment and configuration of Active Directory Domain Services using virtual machines hosted in Microsoft Azure. It simulates an on-prem AD setup using a cloud environment to mirror real-world enterprise infrastructure..<br />
 
 
 <h2>Environments and Technologies Used</h2>
@@ -20,11 +20,17 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>High-Level Deployment and Configuration Steps</h2>
 
-- Create 2 virtual machines within the same network and resource group. One acting as the domain controller and the other as an end-user's computer
-- Install active directory on the VM that will serve as your domain controller 
-- Connect an enduser computer to the Domain of the Domain controller serving as the active directory
-- Create Organizational Units to add, organize, and set permissions for the users being added.
-- Practical use cases to managing and monitoring active directory
+1. Provision 2 Azure virtual machines on the same virtual network:
+  - One for the Domain Controller (Windows Server 2022)
+  - One for the Client (Windows 10)
+2. Install and configure Active Directory Domain Services (AD DS) on the domain controller.
+3. Join the client VM to the domain.
+4. Create and manage OUs, users, and groups.
+5. Use PowerShell scripting for bulk user creation.
+6. Configure remote access and user policies.
+7. Monitor user activity via Group Policy Management and Event Viewer.
+
+
 
 <h2>Deployment and Configuration Steps</h2>
 
